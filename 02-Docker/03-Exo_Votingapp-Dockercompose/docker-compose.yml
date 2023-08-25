@@ -38,6 +38,8 @@ services:
       - backend
     volumes:
       - "db-data:/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD: "trust"
 
 
 
