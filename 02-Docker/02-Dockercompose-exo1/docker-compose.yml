@@ -4,7 +4,7 @@ services:
   front:
     build: 
       context: ./
-      dockerfile: siteweb.dockerfile
+      dockerfile: siteweb.Dockerfile
     ports: 
     - "7777:7777"
     networks:
