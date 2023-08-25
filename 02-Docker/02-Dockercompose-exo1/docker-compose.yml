@@ -1,4 +1,4 @@
-version: 3.7
+version: "3.7"
 
 services:
   front:
@@ -26,7 +26,7 @@ services:
     - "require('http').createServer(function (req, res) { res.end('conteneur backend node'); }).listen(8888)"
 
   db:
-    image: mongodb
+    image: mongo
     ports: 
     - "27017"
     networks:
