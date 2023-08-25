@@ -33,7 +33,7 @@ services:
       - "6379"
 
   db:
-    image: postgres:11
+    image: postgres
     networks:
       - backend
     volumes:
