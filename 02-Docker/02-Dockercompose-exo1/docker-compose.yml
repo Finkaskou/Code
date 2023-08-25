@@ -1,0 +1,45 @@
+version: 3.7
+
+services:
+  front:
+    build: 
+      context: ./
+      dockerfile: siteweb.dockerfile
+    ports: 
+    - "7777:7777"
+    networks:
+    - front
+    depends_on: 
+    - db
+  
+  backend:
+    image: node:slim
+    ports: 
+    - "8888:8888"
+    networks:
+    - backend
+    depends_on: 
+    - db
+    entrypoint:
+    - "node"
+    - "-e"
+    - "require('http').createServer(function (req, res) { res.end('conteneur backend node'); }).listen(8888)"
+
+  db:
+    image: mongodb
+    ports: 
+    - "27017"
+    networks:
+    - db
+    volumes:
+    - "db-data:/var/lib/mongodb"
+    logging:
+      driver: none
+
+networks:
+  front :
+  backend :
+  db :
+
+volumes:
+  db-data:
